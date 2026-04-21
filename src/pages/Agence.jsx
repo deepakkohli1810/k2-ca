@@ -6,6 +6,7 @@ import React, { useRef } from 'react';
 const Agence = () => {
  const imageDivRef = useRef(null); // it is used to target the image div and apply the parallax effect on it
  gsap.registerPlugin(ScrollTrigger);
+
  const imgRef = useRef(null);
 
  const ImageArray = [
@@ -23,13 +24,28 @@ const Agence = () => {
   gsap.to(imageDivRef.current, {
    scrollTrigger: {
     trigger: imageDivRef.current,
-    markers: true,
+    // markers: true, its helpful for visualizing area you want to trigger the animation.
     start: 'top 19.2%',
     end: 'top -80%',
-    scrub: true,
+    scrub: 1,
     pin: true, // it is used to fix the image div in place while scrolling, creating a parallax effect
+    pinSpacing:true, 
+    pinReparent:true, 
+    pinType:'transform',
+    anticipatePin:1, 
+    invalidateOnRefresh:true ,
     onUpdate: function (elem) {
-     console.log(elem.progress * ImageArray.length);
+     console.log(Math.floor(elem.progress * ImageArray.length));
+
+     let imageIndex;
+     if (elem.progress < 1) {
+      imageIndex = Math.floor(elem.progress * ImageArray.length);
+     } else {
+      imageIndex = ImageArray.length - 1;
+     }
+     //  const imageIndex = Math.floor(elem.progress * ImageArray.length);
+
+     imgRef.current.src = ImageArray[imageIndex];
     },
    },
   });
@@ -38,11 +54,11 @@ const Agence = () => {
  return (
   <div>
    {/* Section 1  */}
-   <div className="section1 ">
+   <div className="section1 py-1">
     {/* Image Div */}
     <div
      ref={imageDivRef}
-     className="absolute w-[15vw] overflow-hidden rounded-4xl  h-[20vw]   top-44 left-140 z "
+     className="absolute w-[15vw] overflow-hidden rounded-4xl  h-[20vw]  z "
     >
      <img
       ref={imgRef}
