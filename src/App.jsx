@@ -14,12 +14,12 @@ const App = () => {
 
      <div>
       <FullScreenNav/>
-      {/* <Navbar/>
+      <Navbar/>
  <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/agence" element={<Agence />} />
         <Route path="/projects" element={<Projects />} />
-      </Routes> */}
+      </Routes>
      </div>
      
    

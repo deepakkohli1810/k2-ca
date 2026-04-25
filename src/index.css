@@ -35,6 +35,6 @@ body {
     opacity: 0;
 }
 .link:hover .moveLink{
-    opacity:100;
+    opacity:1   ;
     transition: all ease .3s;
 }
