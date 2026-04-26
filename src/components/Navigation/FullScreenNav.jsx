@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import { useHref, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
+import NavContext from '../../context/NavContext';
 
 const FullScreenNav = () => {
- 
+   const NavContext = 
   const fullNavLinkRef = useRef(null)
 
   useGSAP(function() {

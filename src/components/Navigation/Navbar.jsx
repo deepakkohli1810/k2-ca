@@ -21,9 +21,9 @@ const Navbar = () => {
        }}
        
        className=' w-74 bg-black h-13 relative ' >
-         <div className=' relative flex flex-col gap-2 justify-' >
-               <div className='w-20 h-0.5 bg-white'></div>
-               <div className='w-12 h-0.5 bg-white'></div>
+         <div className=' relative h-full px-8 flex flex-col justify-center items-end gap-1 ' >
+               <div className='w-14 h-0.5 bg-white'></div>
+               <div className='w-8 h-0.5 bg-white'></div>
                 
         </div>
 
