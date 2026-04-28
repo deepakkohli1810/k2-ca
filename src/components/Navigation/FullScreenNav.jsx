@@ -3,18 +3,22 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import { useHref, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
-import NavContext from '../../context/NavContext';
+import { NavbarContext } from '../../context/NavContext';
 
 const FullScreenNav = () => {
-   const NavContext = 
+  
   const fullNavLinkRef = useRef(null)
+  const data = useContext(NavbarContext)
+ console.log(data)  
+ const [navOpen , setNavOpen] = useContext(NavbarContext)
+ console.log(navOpen , setNavOpen)
+ const fullScreenRef = useRef(null)
 
   useGSAP(function() {
   const tl = gsap.timeline()
   
   
    tl.from('.staired' ,{
-      delay:1 ,
       stagger: {
       amount: -0.23
     }
@@ -33,11 +37,20 @@ const FullScreenNav = () => {
    }
    )
 
+   tl.pause()
+
+   if(navOpen){
+    fullScreenRef.current.style.display ='block'
+    tl.play()
+   }else
+    fullScreenRef.current.style.display ='none'
+    tl.reverse()
+
    
-} , )
+} , [navOpen] )
 
   return (
-    <div id='  fullScreenNav' className=' hidden h-screen overflow-x-hidden overflow-y-hidden w-full  absolute black'>
+    <div  ref={fullScreenRef} id='  fullScreenNav' className=' z-50  h-screen overflow-x-hidden overflow-y-hidden w-full  absolute black'>
        
        <div  className='h-screen w-full fixed '>
        <div className="h-full w-full flex">
