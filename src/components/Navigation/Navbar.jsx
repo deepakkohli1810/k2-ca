@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useRef } from 'react'
+import { NavbarContext } from '../../context/NavContext'
 
 const Navbar = () => {
     const navGreenRef = useRef(null)
+    const [navOpen , setNavOpen] = useContext(NavbarContext)
   return (
     <div className='z-4  flex fixed top-0 w-full items-start  justify-between'>
         <div className='w-34 h-18 pl-3 text-white'>
